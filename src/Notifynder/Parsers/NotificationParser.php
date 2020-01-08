@@ -37,7 +37,7 @@ class NotificationParser
         $specialValues = $this->getValues($text);
         if (count($specialValues) > 0) {
             $specialValues = array_filter($specialValues, function ($value) use ($notification) {
-                return ((is_array($notification) && isset($notification[$value])) || (is_object($notification) && isset($notification->$value))) || starts_with($value, ['extra.', 'to.', 'from.']);
+                return ((is_array($notification) && isset($notification[$value])) || (is_object($notification) && isset($notification->$value))) || Str::startsWith($value, ['extra.', 'to.', 'from.']);
             });
 
             foreach ($specialValues as $replacer) {
